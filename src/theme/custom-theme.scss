@@ -1,0 +1,21 @@
+ion-content {
+    --background: #fff url("img/main-background.webp") no-repeat center center / cover;
+     }
+
+ion-toolbar {
+    --background: #d9d9e7;
+    --ion-background-color: linear-gradient(90deg, rgba(101,72,205,1) 0%, rgba(61,155,189,1) 35%, rgba(200,91,206,1) 100%);;
+    position: absolute;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    color: rgba(255, 255, 255, 0.705);
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    }
+     
