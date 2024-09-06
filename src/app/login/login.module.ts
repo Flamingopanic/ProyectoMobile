@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HeaderComponent } from '../header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    MatProgressSpinnerModule
   ],
-  declarations: [LoginPage]
+  declarations: [LoginPage, HeaderComponent]
 })
 export class LoginPageModule {}
