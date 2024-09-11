@@ -2,9 +2,6 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button>Atras</ion-back-button>
-      </ion-buttons>
       <ion-title>RegisApp</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -12,9 +9,9 @@
   <div id="container">
     <strong>Log In</strong><br><br><br>
     <ion-card>
-      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <img alt="Duoc" src="https://seeklogo.com/images/D/duoc-uc-logo-F1437952BE-seeklogo.com.png" />
       <ion-card-header>
-        <ion-card-title>Ingrese credenciales</ion-card-title>
+        <ion-card-title>Datos de usuario</ion-card-title>
       </ion-card-header>
     
       <ion-item>
@@ -29,7 +26,7 @@
     </ion-card>
     
 
-    
+    <ion-card>  
     <div *ngIf="spinner">
       <ion-item id="carga">
         <ion-label>Cargando</ion-label>
@@ -37,8 +34,11 @@
       <ion-item id="carga">
         <mat-spinner></mat-spinner>
       </ion-item>
+      
     </div>
+  </ion-card>
     <ion-button shape="round" color="tertiary" (click)="validar()">Conectar</ion-button>
-    <ion-button shape="round" color="tertiary" [routerLink]="['/register']">Recuperar Contraseña</ion-button>
+    <ion-button shape="round" color="tertiary" [routerLink]="['/recuperarcontra']">Recuperar Contraseña</ion-button>
   </div>
+ 
 </ion-content>

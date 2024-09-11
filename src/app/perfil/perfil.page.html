@@ -1,14 +1,22 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 <ion-header collapse="condense">
   <ion-toolbar>
     <ion-title>RegisApp</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
 
+<ion-content [fullscreen]="true">
+<div class="animate__animated animate__bounce" >
   <p class="titulo">Bienvenido/a {{username}}</p>
+  <div class="container">
+    <div class="avatar">
+        <img src="https://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54e20ebce4b014cdbc3fd71b/5a992947e2c48320418ae5e0/1519987239570/icon.png?format=1500w" />
+    </div>
+  </div>
 
   <ion-button shape="round" color="tertiary">Ver asistencia</ion-button> <br>
   <ion-button shape="round" color="tertiary">Registrar asistencia</ion-button>
-
+</div>
 </ion-content>

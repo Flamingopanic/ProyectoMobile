@@ -7,14 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { RecuperarcontraPageRoutingModule } from './recuperarcontra-routing.module';
 
 import { RecuperarcontraPage } from './recuperarcontra.page';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HeaderComponent } from '../header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecuperarcontraPageRoutingModule
+    RecuperarcontraPageRoutingModule,
+    MatProgressSpinnerModule
   ],
-  declarations: [RecuperarcontraPage]
+  declarations: [RecuperarcontraPage, HeaderComponent]
 })
 export class RecuperarcontraPageModule {}
