@@ -18,6 +18,6 @@ import { HeaderComponent } from '../header/header.component';
     RecuperarcontraPageRoutingModule,
     MatProgressSpinnerModule
   ],
-  declarations: [RecuperarcontraPage, HeaderComponent]
+  declarations: [RecuperarcontraPage]
 })
 export class RecuperarcontraPageModule {}

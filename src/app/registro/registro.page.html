@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title>RegisApp</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Log In</strong><br><br><br>
+    <ion-card>
+      <img alt="Duoc" src="https://seeklogo.com/images/D/duoc-uc-logo-F1437952BE-seeklogo.com.png" />
+      <ion-card-header>
+        <ion-card-title>Datos de usuario</ion-card-title>
+      </ion-card-header>
+    
+      <ion-item>
+        <ion-input [(ngModel)]="user.username" label="Usuario" placeholder="Ingrese nombre de usuario"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Contraseña" [(ngModel)]="user.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Email" [(ngModel)]="user.email" label="Email" placeholder="Ingrese su email"></ion-input>
+      </ion-item>
+
+    </ion-card>
+  
+  <ion-button fill="outline" (click)="registrar()">Registrarse</ion-button><br>
+  <ion-button shape="round" color="tertiary" [routerLink]="['/login']">Volver</ion-button>
+  </div>
+ 
+</ion-content>

@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'recuperarcontra',
     loadChildren: () => import('./recuperarcontra/recuperarcontra.module').then( m => m.RecuperarcontraPageModule)
   },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
 
 ];
 

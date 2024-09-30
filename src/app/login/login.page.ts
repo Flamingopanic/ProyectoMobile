@@ -18,7 +18,10 @@ export class LoginPage {
   /* Estado de carga */
   spinner = false;
 
-  constructor(private router: Router, private animationController: AnimationController) {
+  constructor(
+    private router: Router,
+    private animationController: AnimationController) 
+     {
 
 
   }
