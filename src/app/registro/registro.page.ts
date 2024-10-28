@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/Servicios/storage.service';
 import { AnimationController } from '@ionic/angular';
+import { ConnectableObservable } from 'rxjs';
 
 
 @Component({
@@ -25,10 +26,16 @@ user= {
   ngOnInit() {
   }
 
-
-  registrar(){
-    console.log(this.user);
-    this.storage.set(this.user.username, this.user);
-    this.router.navigate(['/home'])
+  async registrar() {
+    return this.storage.set(this.user.username, this.user.password).then((res) => {
+      if (res != null) {
+        return true;
+      }else{
+        return false;
+      }
+    })
+    .catch((error) => {
+      return false;
+    });
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QrService } from '../Servicios/qr.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  qrCodeUrl: string = "";
 
-  constructor() {}
+  constructor(private qrService: QrService) {}
 
+  generateQrCode() {
+    const data = 'https://www.ejemplo.com';
+    this.qrCodeUrl = this.qrService.generateQrUrl(data);
+  }
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { StorageService } from '../Servicios/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,7 @@ export class LoginPage {
   spinner = false;
 
   constructor(
+    private storage: StorageService, 
     private router: Router,
     private animationController: AnimationController) 
      {
@@ -51,33 +54,37 @@ export class LoginPage {
     this.spinner = !this.spinner;
   }
   validar() {
-    if (this.user.username.length != 0) {
-      if (this.user.password.length != 0) {
-        //Funciona
-        this.mensaje = 'Conexion exitosa';
-        let navigationExtras: NavigationExtras = {
-          state: {
-            username: this.user.username,
-            password: this.user.password,
-          },
-        };
-        this.cambiarSpinner();
-        /* setTimeout = permite generar un pequeño delay para realizar la accion */
-        setTimeout(() => {
-
-          this.router.navigate(['/perfil'], navigationExtras);
+    return this.storage
+      .get(this.user.username)
+      .then((res) => {
+        //Si funciona me devuelve el usuario completo
+        if (res === this.user.password) {
           this.cambiarSpinner();
-          this.mensaje = "";
-        }, 3000);
-      } else {
-        console.log('Contraseña vacia');
-        this.mensaje = 'Contraseña vacia';
-        //No funciona
-      }
-    } else {
-      console.log('Usuario vacio');
-      this.mensaje = 'Usuario Vacio';
-      //Tampoco funciona
-    }
+          let navigationExtras: NavigationExtras = {
+            state: {
+              username: this.user.username,
+              password: this.user.password,
+            },
+          };
+          setTimeout(() => {
+            this.router.navigate(['/perfil'], navigationExtras);
+            this.cambiarSpinner();
+            this.mensaje = "";
+          }, 3000);
+          return true;
+        } else {
+          console.log('Contraseña vacía');
+          this.mensaje = 'Contraseña vacía';
+          return false;
+        }
+      })
+      .catch((error) => {
+        console.log('Error en el sistema: ' + error);
+        return false;
+      });
   }
+  
+
+
 }
+

@@ -15,6 +15,7 @@ private BDDStatus:Promise<void>;
 
   async onInit():Promise<void>{
     const storage = await this.storage.create();
+    console.log("Conexión Exitosa")
     this.bdd=storage;
   }
 
