@@ -1,4 +1,3 @@
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -14,31 +13,37 @@
         <ion-card-title>Datos de usuario</ion-card-title>
       </ion-card-header>
     
-      <ion-item>
-        <ion-input [(ngModel)]="user.username" label="Usuario" placeholder="Ingrese nombre de usuario"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input label="Contraseña" [(ngModel)]="user.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>{{mensaje}}</ion-label>
-      </ion-item>
-    </ion-card>
-    
-
-    <ion-card>  
-    <div *ngIf="spinner">
-      <ion-item id="carga">
-        <ion-label>Cargando</ion-label>
-      </ion-item>
-      <ion-item id="carga">
-        <mat-spinner></mat-spinner>
+      <ion-item [color]="user.username ? 'medium' : 'light'">
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input [(ngModel)]="user.username" placeholder="Ingrese nombre de usuario"></ion-input>
       </ion-item>
       
+      <ion-item [color]="user.password ? 'medium' : 'light'">
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input [(ngModel)]="user.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <div *ngIf="mensaje" class="mensaje-error">
+      {{ mensaje }}
     </div>
-  </ion-card>
-    <ion-button shape="round" color="tertiary" (click)="validar()">Conectar</ion-button>
-    <ion-button shape="round" color="tertiary" [routerLink]="['/recuperarcontra']">Recuperar Contraseña</ion-button>
+
+    <ion-card *ngIf="spinner">
+      <div class="spinner-container">
+        <ion-label>Cargando...</ion-label>
+        <mat-spinner></mat-spinner>
+      </div>
+    </ion-card>
+
+    <ion-button 
+      shape="round" 
+      color="tertiary" 
+      (click)="validar()" 
+      [disabled]="!user.username || !user.password">
+      Conectar
+    </ion-button>
+    <ion-button shape="round" color="tertiary" [routerLink]="['/recuperarcontra']">
+      Recuperar Contraseña
+    </ion-button>
   </div>
- 
 </ion-content>
