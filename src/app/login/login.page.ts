@@ -3,6 +3,13 @@ import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
 import { StorageService } from '../Servicios/storage.service';
 
+// Definición del tipo Usuario
+interface Usuario {
+  username: string;
+  password: string;
+  email?: string; // Si quieres agregar más campos, como el email, puedes hacerlo
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -46,15 +53,19 @@ export class LoginPage {
 
   async validar() {
     try {
-      const storedPassword = await this.storage.get(this.user.username);
+      // Obtener la lista de usuarios almacenados
+      const usuarios: Usuario[] = await this.storage.get('usuarios') || [];
 
-      if (!storedPassword) {
+      // Buscar el usuario por nombre de usuario
+      const usuario = usuarios.find(u => u.username === this.user.username);
+
+      if (!usuario) {
         // Usuario no encontrado
         this.mensaje = 'Usuario no encontrado';
         return false;
       }
 
-      if (storedPassword === this.user.password) {
+      if (usuario.password === this.user.password) {
         // Credenciales válidas
         this.cambiarSpinner();
         await this.storage.set('isLoggedIn', true); // Guardar estado de autenticación

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/Servicios/storage.service';
-import { AnimationController } from '@ionic/angular';
-import { ConnectableObservable } from 'rxjs';
-
 
 @Component({
   selector: 'app-registro',
@@ -12,30 +9,40 @@ import { ConnectableObservable } from 'rxjs';
 })
 export class RegistroPage implements OnInit {
 
+  user = {
+    username: "",
+    email: "",
+    password: ""
+  };
 
-user= {
-  username:"",
-  email:"",
-  password:""
-}
+  constructor(private storage: StorageService, private router: Router) { }
 
-
-  constructor(private storage: StorageService, private router: Router,private animationController: AnimationController) { }
-  
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   async registrar() {
-    return this.storage.set(this.user.username, this.user.password).then((res) => {
-      if (res != null) {
-        return true;
-      }else{
-        return false;
+    try {
+      // Validación de campos
+      if (!this.user.username || !this.user.email || !this.user.password) {
+        console.error("Todos los campos son requeridos.");
+        return;
       }
-    })
-    .catch((error) => {
-      return false;
-    });
+
+      // Primero, obtener la lista de usuarios guardados
+      let usuarios = await this.storage.get('usuarios') || []; // Si no hay usuarios, inicializamos un array vacío
+
+      // Añadir el nuevo usuario al array
+      usuarios.push(this.user);
+
+      // Verificar que el usuario se ha añadido correctamente antes de guardar
+      console.log('Usuarios antes de guardar:', usuarios);
+
+      // Guardar el array actualizado en el Storage
+      await this.storage.set('usuarios', usuarios);
+
+      // Redirigir a la página de login o donde se desee
+      this.router.navigate(['/login']);
+    } catch (error) {
+      console.error('Error al registrar el usuario:', error);
+    }
   }
 }

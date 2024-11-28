@@ -6,27 +6,35 @@
   </ion-header>
 
   <div id="container">
-    <strong>Log In</strong><br><br><br>
+    <strong>Registro</strong><br><br><br>
     <ion-card>
       <img alt="Duoc" src="https://seeklogo.com/images/D/duoc-uc-logo-F1437952BE-seeklogo.com.png" />
       <ion-card-header>
         <ion-card-title>Datos de usuario</ion-card-title>
       </ion-card-header>
     
+      <!-- Campo de Usuario -->
       <ion-item>
-        <ion-input [(ngModel)]="user.username" label="Usuario" placeholder="Ingrese nombre de usuario"></ion-input>
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input [(ngModel)]="user.username" placeholder="Ingrese nombre de usuario"></ion-input>
       </ion-item>
+      
       <ion-item>
-        <ion-input label="Contraseña" [(ngModel)]="user.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input [(ngModel)]="user.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
       </ion-item>
+      
       <ion-item>
-        <ion-input label="Email" [(ngModel)]="user.email" label="Email" placeholder="Ingrese su email"></ion-input>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="user.email" type="email" placeholder="Ingrese su email"></ion-input>
       </ion-item>
+      
 
     </ion-card>
   
-  <ion-button fill="outline" (click)="registrar()">Registrarse</ion-button><br>
-  <ion-button shape="round" color="tertiary" [routerLink]="['/login']">Volver</ion-button>
+    <!-- Botones -->
+    <ion-button expand="full" fill="outline" (click)="registrar()">Registrarse</ion-button><br><br>
+    <ion-button expand="full" shape="round" color="tertiary" [routerLink]="['/login']">Volver</ion-button>
   </div>
- 
 </ion-content>
+
