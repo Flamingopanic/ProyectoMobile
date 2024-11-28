@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
-    canActivate: [AuthGuard], // Protege la ruta
+    canActivate: [AuthGuard] // Protege la ruta
   },
   {
     path: 'recuperarcontra',
@@ -32,8 +32,24 @@ const routes: Routes = [
   },
   {
     path: 'usuario-administrador',
-    loadChildren: () => import('./usuario-administrador/usuario-administrador.module').then( m => m.UsuarioAdministradorPageModule)
+    loadChildren: () => import('./usuario-administrador/usuario-administrador.module').then( m => m.UsuarioAdministradorPageModule),
+    canActivate: [AuthGuard]
   },
+  {
+    path: 'error-acceso',
+    loadChildren: () => import('./error-acceso/error-acceso.module').then( m => m.ErrorAccesoPageModule)
+  },
+
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    redirectTo: '/error-acceso', // Manejo de rutas desconocidas
+  },
+
 
 ];
 

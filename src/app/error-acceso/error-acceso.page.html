@@ -1,0 +1,21 @@
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-header>
+    <ion-toolbar class="toolbar-centered">
+      <ion-buttons slot="start" class="back-button-container">
+        <ion-back-button defaultHref="/login"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="title-centered">¡Error!</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+  <div class="error-container">
+    <i class="fa-solid fa-circle-xmark fa-5x" style="color: #B197FC;"></i>
+    <h1>Acceso Inválido</h1>
+    <p>No tienes permiso para acceder a esta página. Por favor, inicia sesión o contacta al administrador.</p>
+    <ion-button expand="full" color="primary" routerLink="/login">Ir a Login</ion-button>
+  </div></ion-card>
+</ion-content>

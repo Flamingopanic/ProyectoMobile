@@ -1,23 +1,25 @@
-<ion-content>
+<ion-content [fullscreen]="true">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Usuarios Administrador</ion-title>
+      <ion-title>Lista de usuarios</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <!-- Lista de usuarios -->
   <ion-list>
-    <ion-item *ngFor="let user of users">
+    <ion-item *ngFor="let user of users; let i = index">
       <ion-label>
         <h2>{{ user.username }}</h2>
         <p>{{ user.email }}</p>
       </ion-label>
+      <!-- Botón para modificar -->
+      <ion-button slot="end" (click)="modificarUsuario(user, i)">Modificar</ion-button>
+      <!-- Botón para eliminar -->
+      <ion-button slot="end" color="danger" (click)="eliminarUsuario(i)">Eliminar</ion-button>
     </ion-item>
   </ion-list>
 
-  <!-- Botones -->
-  <ion-button expand="full" fill="outline" (click)="loadUsers()">Actualizar Lista</ion-button>
-  <ion-button expand="full" (click)="mostrarUsuarios()">Ver Usuarios en Consola</ion-button>
+  <!-- Botón para cargar nuevos usuarios si se requiere -->
+  <ion-button expand="full" (click)="loadUsers()">Actualizar Lista</ion-button>
   <ion-button expand="full" (click)="limpiarTodo()">Limpiar Todo</ion-button>
 </ion-content>
-

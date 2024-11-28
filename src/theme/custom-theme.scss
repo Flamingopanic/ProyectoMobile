@@ -3,11 +3,13 @@ ion-content {
      }
 
 ion-toolbar {
-    --background: #d9d9e7;
+    background: #d9d9e7;
     --ion-background-color: linear-gradient(90deg, rgba(101,72,205,1) 0%, rgba(61,155,189,1) 35%, rgba(200,91,206,1) 100%);
-    /* Elimina la propiedad position: absolute */
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     color: rgba(255, 255, 255, 0.705);
+    position: relative;
+    height: 100%;
+    width: 100%;
     }
 
 ion-title {
@@ -21,5 +23,32 @@ ion-title {
     font-style: normal;
     font-variant: normal;
     text-transform: none;
+    width: 100%;
     }
-     
+
+
+
+    .toolbar-centered {
+        display: flex;                /* Flexbox para organizar los elementos */
+        align-items: center;          /* Centrar verticalmente */
+        justify-content: center;      /* Centrar horizontalmente */
+        position: relative;           /* Necesario para posicionar elementos absolutos */
+        height: 100%;                 /* Asegura que ocupe todo el espacio del ion-toolbar */
+      }
+      
+      .back-button-container {
+        position: absolute;           /* Evita que influya en el flujo normal */
+        left: 0;                      /* Fija el botón en la esquina izquierda */
+        top: 50%;                     /* Posiciona verticalmente al centro */
+        transform: translateY(-50%);  /* Ajusta el centro exacto */
+      }
+      
+      .title-centered {
+        margin: 0;                    /* Elimina márgenes extra */
+        text-align: center;           /* Centra el texto horizontalmente */
+        position: absolute;           /* Permite posicionamiento libre */
+        left: 50%;                    /* Centra horizontalmente */
+        top: 50%;                     /* Centra verticalmente */
+        transform: translate(-50%, -50%); /* Ajusta el centro exacto */
+      }
+      
