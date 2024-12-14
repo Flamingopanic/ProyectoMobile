@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -31,9 +32,17 @@ const routes: Routes = [
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
   },
   {
+    path: 'leerqr',
+    loadChildren: () => import('./leerqr/leerqr.module').then( m => m.LeerqrPageModule)
+  },
+  {
+    path: 'generarqr',
+    loadChildren: () => import('./generarqr/generarqr.module').then( m => m.GenerarqrPageModule)
+  },
+  {
     path: 'usuario-administrador',
     loadChildren: () => import('./usuario-administrador/usuario-administrador.module').then( m => m.UsuarioAdministradorPageModule),
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
   {
     path: 'error-acceso',
@@ -49,6 +58,16 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/error-acceso', // Manejo de rutas desconocidas
   },
+  {
+    path: 'leerqr',
+    loadChildren: () => import('./leerqr/leerqr.module').then( m => m.LeerqrPageModule)
+  },
+  {
+    path: 'generarqr',
+    loadChildren: () => import('./generarqr/generarqr.module').then( m => m.GenerarqrPageModule)
+  },
+
+
 
 
 ];

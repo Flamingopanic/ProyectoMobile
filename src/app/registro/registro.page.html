@@ -32,6 +32,14 @@
         <ion-input [(ngModel)]="user.email" type="email" placeholder="Ingrese su email"></ion-input>
       </ion-item>
       
+      <ion-item>
+        <ion-label position="stacked">Rol</ion-label>
+        <ion-select [(ngModel)]="user.role">
+          <ion-select-option value="user">Alumno</ion-select-option>
+          <ion-select-option value="admin">Profesor</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
 
     </ion-card>
   

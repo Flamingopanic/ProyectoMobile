@@ -3,36 +3,38 @@ import { Router } from '@angular/router';
 import { QrService } from '../Servicios/qr.service';
 import { StorageService } from '../Servicios/storage.service';
 
-
-
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  
-  username = '';
-  qrCodeUrl: string = ""; 
+  username: string = ''; // Asegúrate de tener esta propiedad declarada
+  qrCodeUrl: string = '';
 
-  constructor(private router: Router, private qrService: QrService,  private storageService: StorageService) {
-    const navegacion = this.router.getCurrentNavigation();
-    const state = navegacion?.extras.state as {
-      username: '';
-      password: '';
-    };
-    this.username = state?.username || ''; 
+  constructor(
+    private router: Router,
+    private qrService: QrService,
+    private storageService: StorageService
+  ) {}
+
+  ngOnInit() {
+    // Acceder al estado pasado en la navegación (usando corchetes)
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras.state && navigation.extras.state['username']) {
+      this.username = navigation.extras.state['username'];  // Acceso con corchetes
+      console.log('Username en PerfilPage:', this.username);  // Verifica si está llegando el valor
+    }
   }
 
   generateQrCode() {
     const data = 'https://www.ejemplo.com';
     this.qrCodeUrl = this.qrService.generateQrUrl(data);
-  } 
-
-  logout() {
-    this.storageService.eliminar('isLoggedIn');  // Elimina el estado de sesión
-    this.router.navigate(['/login']);  // Redirige a la página de login
   }
 
-  ngOnInit() {}
+  logout() {
+    this.storageService.eliminar('isLoggedIn');
+    this.router.navigate(['/login']);
+  }
+  
 }

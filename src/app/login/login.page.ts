@@ -7,7 +7,8 @@ import { StorageService } from '../Servicios/storage.service';
 interface Usuario {
   username: string;
   password: string;
-  email?: string; // Si quieres agregar más campos, como el email, puedes hacerlo
+  email: string;
+  role: string;
 }
 
 @Component({
@@ -69,16 +70,28 @@ export class LoginPage {
         // Credenciales válidas
         this.cambiarSpinner();
         await this.storage.set('isLoggedIn', true); // Guardar estado de autenticación
+
+        // Guardar el usuario completo en el almacenamiento como currentUser
+        await this.storage.set('currentUser', usuario); // <-- Aquí se guarda el usuario autenticado
+
         let navigationExtras: NavigationExtras = {
           state: {
             username: this.user.username,
+            role: usuario.role, // Pasar el rol como estado de navegación
           },
         };
+
         setTimeout(() => {
-          this.router.navigate(['/perfil'], navigationExtras);
+          // Redirigir según el rol del usuario
+          if (usuario.role === 'admin') {
+            this.router.navigate(['/usuario-administrador'], navigationExtras); // Página para administradores
+          } else {
+            this.router.navigate(['/perfil'], navigationExtras); // Página para usuarios normales
+          }
           this.cambiarSpinner();
           this.mensaje = '';
         }, 3000);
+
         return true;
       } else {
         // Contraseña incorrecta
