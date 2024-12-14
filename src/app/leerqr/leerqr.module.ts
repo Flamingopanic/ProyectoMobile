@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { LeerqrPageRoutingModule } from './leerqr-routing.module';
 
 import { LeerqrPage } from './leerqr.page';
+import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { LeerqrPage } from './leerqr.page';
     IonicModule,
     LeerqrPageRoutingModule
   ],
-  declarations: [LeerqrPage]
+  declarations: [LeerqrPage,BarcodeScanningModalComponent]
 })
 export class LeerqrPageModule {}

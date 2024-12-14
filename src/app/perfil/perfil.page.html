@@ -17,7 +17,7 @@
 
   <ion-button shape="round" color="tertiary">Ver asistencia</ion-button> <br>
   
-  <ion-button shape="round" color="tertiary">Registrar asistencia</ion-button><br>
+  <ion-button shape="round" color="tertiary" [routerLink]="['/leerqr']">Registrar asistencia</ion-button><br>
   <ion-button shape="round" color="tertiary" [routerLink]="['/usuario-administrador']">Lista de usuarios</ion-button><br>
   <ion-button shape="round" color="danger" (click)="logout()">Cerrar sesión</ion-button>
 </div>

@@ -17,9 +17,10 @@
         
 
       </ion-card-header>
-      <qr-code [value]="qrText" 
+      <qr-code *ngIf="qrText"[value]="qrText" 
       size="190" 
       errorCorrectionLevel="M" />
+      <img *ngIf="!qrText" src="assets/images/qr.webp" alt="">
       <div class="ion-padding-top">{{qrText}}</div>
       
     </ion-card>
