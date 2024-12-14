@@ -5,6 +5,7 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    padding: 15px;
   }
   
   #container strong {
@@ -85,6 +86,7 @@
     border: 1px dashed var(--ion-color-medium);
     border-radius: 10px;
     margin: 30px 0;
+    
   
     p{
       color: var(--ion-color-tertiary);
@@ -126,3 +128,4 @@
     justify-content: center;
     align-items: center;
   }
+
