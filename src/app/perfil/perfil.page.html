@@ -11,14 +11,10 @@
     <div class="avatar">
         <img src="https://static1.squarespace.com/static/54b7b93ce4b0a3e130d5d232/54e20ebce4b014cdbc3fd71b/5a992947e2c48320418ae5e0/1519987239570/icon.png?format=1500w" />
     </div>
-    <ion-button (click)="generateQrCode()">Generar QR</ion-button>
-    <img *ngIf="qrCodeUrl" [src]="qrCodeUrl" alt="Código QR">
   </div>
-
-  <ion-button shape="round" color="tertiary">Ver asistencia</ion-button> <br>
   
-  <ion-button shape="round" color="tertiary" [routerLink]="['/leerqr']">Registrar asistencia</ion-button><br>
-  <ion-button shape="round" color="tertiary" [routerLink]="['/usuario-administrador']">Lista de usuarios</ion-button><br>
+  <ion-button shape="round" color="tertiary" [routerLink]="['/leerqr']">Registrar asistencia</ion-button>
+  <ion-button shape="round" color="tertiary" [routerLink]="['/usuario-administrador']">Lista de usuarios</ion-button>
   <ion-button shape="round" color="danger" (click)="logout()">Cerrar sesión</ion-button>
 </div>
 </ion-content>

@@ -12,7 +12,7 @@ import { Browser } from '@capacitor/browser';
 })
 export class LeerqrPage implements OnInit {
 
-  scanResult = '';
+  scanResult = 'https://www.duoc.cl/';
   
   constructor(
     private modalController: ModalController,
@@ -66,37 +66,50 @@ export class LeerqrPage implements OnInit {
     toast.present();
   };
 
-  isUrl(){
-    let regex = /\.(com|net|io|me|crypto|ai)\b/i;
+  isUrl() {
+    let regex = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(\/[^\s]*)?$/i;
     return regex.test(this.scanResult);
   }
-  
+
 
 openCapacitorSite = async () => {
+  const alert = await this.alertController.create({
+    header: 'Confirm!',
+    message: '¿Quieres abrir este enlace en el navegador?',
+    buttons: [
+      {
+        text: 'Cancelar',
+        role: 'cancel',
+      },
+      {
+        text: 'Abrir',
+        handler: async () => {
+          let url = this.scanResult;
 
-    const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Quieres abrir este enlace en el navegador?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        }, {
-          text: 'Okay',
-          handler: async() => {
-            let url = this.scanResult;
-
-            if(!['https://'].includes(this.scanResult)) url ='https://'+ this.scanResult
-
-            await Browser.open({ url });
+          // Si no tiene "http://" o "https://", le agregamos "https://"
+          if (!/^https?:\/\//i.test(url)) {
+            url = 'https://' + url;
           }
-        }
-      ]
-    });
-  
-    await alert.present();
-  
 
-  
+          // Validamos si es una URL válida
+          if (this.isUrl()) {
+            await Browser.open({ url });
+          } else {
+            const toast = await this.toastController.create({
+              message: 'URL no válida',
+              duration: 2000,
+              color: 'danger',
+              position: 'bottom',
+            });
+            toast.present();
+          }
+        },
+      },
+    ],
+  });
+
+  await alert.present();
 };
+
+
 }

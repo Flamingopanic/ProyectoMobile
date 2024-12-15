@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenerarqrPage implements OnInit {
 
-  qrText = 'Asistencia';
+  qrText = 'www.duoc.cl';
 
   constructor() { }
 
