@@ -2,6 +2,9 @@
 <ion-content [fullscreen]="true">
   <ion-header>
     <ion-toolbar>
+      <ion-buttons slot="start" class="back-button-container">
+        <ion-back-button defaultHref="/login"></ion-back-button>
+      </ion-buttons>
       <ion-title>Perfil</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -15,6 +18,7 @@
   
   <ion-button shape="round" color="tertiary" [routerLink]="['/leerqr']">Registrar asistencia</ion-button>
   <ion-button shape="round" color="tertiary" [routerLink]="['/usuario-administrador']">Lista de usuarios</ion-button>
+  <ion-button shape="round" color="tertiary" [routerLink]="['/lista-asistencias']">Ver Lista de Asistencias</ion-button>
   <ion-button shape="round" color="danger" (click)="logout()">Cerrar sesión</ion-button>
 </div>
 </ion-content>

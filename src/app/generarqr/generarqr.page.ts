@@ -5,13 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './generarqr.page.html',
   styleUrls: ['./generarqr.page.scss'],
 })
+
 export class GenerarqrPage implements OnInit {
+  qrText: string;
+  classId: string = 'Asignatura';  // Ejemplo de ID de clase
+  username: string = 'usuario';  // Este valor puede ser obtenido de un servicio de usuario logueado
 
-  qrText = 'www.duoc.cl';
+  constructor() {
+    this.qrText = `${this.classId}\n${new Date().toLocaleDateString()}`; // Solo muestra la fecha, no la hora
 
-  constructor() { }
-
-  ngOnInit() {
   }
+
+  ngOnInit() {}
 
 }

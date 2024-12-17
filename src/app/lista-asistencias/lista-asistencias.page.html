@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="back-button-container">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de Asistencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let usuario of usuarios">
+    <ion-card-header>
+      <ion-card-title>{{ usuario.username }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Email:</strong> {{ usuario.email }}</p>
+      <ion-list>
+        <ion-item *ngFor="let asistencia of usuario.asistencias">
+          <ion-label>
+            <h2>Clase: {{ asistencia.course }}</h2>
+            <p>Fecha: {{ asistencia.date }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje si no hay usuarios con rol "user" -->
+  <div *ngIf="usuarios.length === 0" class="no-data">
+    <p>No hay usuarios con rol "user".</p>
+  </div>
+</ion-content>

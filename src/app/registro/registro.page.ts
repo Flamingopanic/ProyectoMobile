@@ -13,7 +13,8 @@ export class RegistroPage implements OnInit {
     username: "",
     email: "",
     password: "",
-    role: "user" 
+    role: "user",
+    asistencias: [] 
   };
 
   constructor(private storage: StorageService, private router: Router) { }

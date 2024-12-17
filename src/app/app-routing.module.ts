@@ -45,6 +45,11 @@ const routes: Routes = [
     canActivate: [AdminGuard]
   },
   {
+    path: 'lista-asistencias',
+    loadChildren: () => import('./lista-asistencias/lista-asistencias.module').then(m => m.ListaAsistenciasPageModule)
+  },
+  
+  {
     path: 'error-acceso',
     loadChildren: () => import('./error-acceso/error-acceso.module').then( m => m.ErrorAccesoPageModule)
   },
@@ -66,6 +71,11 @@ const routes: Routes = [
     path: 'generarqr',
     loadChildren: () => import('./generarqr/generarqr.module').then( m => m.GenerarqrPageModule)
   },
+  {
+    path: 'lista-asistencias',
+    loadChildren: () => import('./lista-asistencias/lista-asistencias.module').then( m => m.ListaAsistenciasPageModule)
+  },
+
 
 
 

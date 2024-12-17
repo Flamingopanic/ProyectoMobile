@@ -15,12 +15,11 @@
       <div id="qrImage">
         <div class="d-flex-center">
         <div class="d-flex-center qr-wrapper">
-          <qr-code *ngIf="qrText"[value]="qrText" size="190" errorCorrectionLevel="M" />
+          <qr-code *ngIf="qrText" [value]="qrText" size="190" errorCorrectionLevel="M"></qr-code>
           <img *ngIf="!qrText" src="assets/images/qr.webp" alt=""></div></div></div>
     </ion-card>
-    <div class=" ion-padding-bottom">{{qrText}}</div>
-    
-      <ion-textarea label="Generar otro qr" labelPlacement="stacked" fill="outline" [(ngModel)]="qrText" rows="3" [autoGrow]="true"></ion-textarea>
+
+      <ion-textarea label="Registrar asistencia" labelPlacement="stacked" fill="outline" [(ngModel)]="qrText" rows="3" [autoGrow]="true"></ion-textarea>
     
   </div>
 </ion-content>
